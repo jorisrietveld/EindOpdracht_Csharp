@@ -34,19 +34,19 @@
             this.tabCurrent = new System.Windows.Forms.TabPage();
             this.tabTrend = new System.Windows.Forms.TabPage();
             this.tabOptions = new System.Windows.Forms.TabPage();
-            this.systemTrayMenu = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.systemTrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.trayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.trayMenuTitle = new System.Windows.Forms.ToolStripMenuItem();
-            this.overToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verversenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sluitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trayMenuAboutButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.trayMenuRefreshButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.trayMenuOptionsButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.trayMenuOpenButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.trayMenuCloseButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tabMenu.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            this.trayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMenu
@@ -90,26 +90,28 @@
             this.tabOptions.Text = "Opties";
             this.tabOptions.UseVisualStyleBackColor = true;
             // 
-            // systemTrayMenu
+            // systemTrayIcon
             // 
-            this.systemTrayMenu.Text = "Stenden Weerstation";
-            this.systemTrayMenu.Visible = true;
-            this.systemTrayMenu.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.systemTrayMenu_MouseDoubleClick);
+            this.systemTrayIcon.ContextMenuStrip = this.trayMenu;
+            this.systemTrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("systemTrayIcon.Icon")));
+            this.systemTrayIcon.Text = "Stenden Weerstation";
+            this.systemTrayIcon.Visible = true;
+            this.systemTrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.SystemTrayMenu_MouseDoubleClick);
             // 
-            // contextMenuStrip1
+            // trayMenu
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.trayMenuTitle,
-            this.overToolStripMenuItem,
+            this.trayMenuAboutButton,
             this.toolStripSeparator2,
-            this.verversenToolStripMenuItem,
+            this.trayMenuRefreshButton,
             this.toolStripSeparator3,
-            this.optiesToolStripMenuItem,
+            this.trayMenuOptionsButton,
             this.toolStripSeparator1,
-            this.openToolStripMenuItem,
-            this.sluitenToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(206, 176);
+            this.trayMenuOpenButton,
+            this.trayMenuCloseButton});
+            this.trayMenu.Name = "trayMenu";
+            this.trayMenu.Size = new System.Drawing.Size(206, 176);
             // 
             // trayMenuTitle
             // 
@@ -118,36 +120,41 @@
             this.trayMenuTitle.Name = "trayMenuTitle";
             this.trayMenuTitle.Size = new System.Drawing.Size(205, 22);
             this.trayMenuTitle.Text = "Huidige temperatuur: 7C";
+            this.trayMenuTitle.Click += new System.EventHandler(this.TrayMenuTitle_Click);
             // 
-            // overToolStripMenuItem
+            // trayMenuAboutButton
             // 
-            this.overToolStripMenuItem.Name = "overToolStripMenuItem";
-            this.overToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.overToolStripMenuItem.Text = "Over...";
+            this.trayMenuAboutButton.Name = "trayMenuAboutButton";
+            this.trayMenuAboutButton.Size = new System.Drawing.Size(205, 22);
+            this.trayMenuAboutButton.Text = "Over...";
+            this.trayMenuAboutButton.Click += new System.EventHandler(this.TrayMenuAboutButton_Click);
             // 
-            // verversenToolStripMenuItem
+            // trayMenuRefreshButton
             // 
-            this.verversenToolStripMenuItem.Name = "verversenToolStripMenuItem";
-            this.verversenToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.verversenToolStripMenuItem.Text = "Verversen...";
+            this.trayMenuRefreshButton.Name = "trayMenuRefreshButton";
+            this.trayMenuRefreshButton.Size = new System.Drawing.Size(205, 22);
+            this.trayMenuRefreshButton.Text = "Verversen...";
+            this.trayMenuRefreshButton.Click += new System.EventHandler(this.TrayMenuRefreshButton_Click);
             // 
-            // optiesToolStripMenuItem
+            // trayMenuOptionsButton
             // 
-            this.optiesToolStripMenuItem.Name = "optiesToolStripMenuItem";
-            this.optiesToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.optiesToolStripMenuItem.Text = "Opties...";
+            this.trayMenuOptionsButton.Name = "trayMenuOptionsButton";
+            this.trayMenuOptionsButton.Size = new System.Drawing.Size(205, 22);
+            this.trayMenuOptionsButton.Text = "Opties...";
+            this.trayMenuOptionsButton.Click += new System.EventHandler(this.TrayMenuOptionsButton_Click);
             // 
-            // openToolStripMenuItem
+            // trayMenuOpenButton
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.openToolStripMenuItem.Text = "Open...";
+            this.trayMenuOpenButton.Name = "trayMenuOpenButton";
+            this.trayMenuOpenButton.Size = new System.Drawing.Size(205, 22);
+            this.trayMenuOpenButton.Text = "Open...";
             // 
-            // sluitenToolStripMenuItem
+            // trayMenuCloseButton
             // 
-            this.sluitenToolStripMenuItem.Name = "sluitenToolStripMenuItem";
-            this.sluitenToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.sluitenToolStripMenuItem.Text = "Sluiten";
+            this.trayMenuCloseButton.Name = "trayMenuCloseButton";
+            this.trayMenuCloseButton.Size = new System.Drawing.Size(205, 22);
+            this.trayMenuCloseButton.Text = "Sluiten";
+            this.trayMenuCloseButton.Click += new System.EventHandler(this.TrayMenuCloseButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -176,7 +183,7 @@
             this.Text = "Stenden Weather";
             this.Load += new System.EventHandler(this.Main_Load);
             this.tabMenu.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.trayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -187,16 +194,16 @@
         private System.Windows.Forms.TabPage tabCurrent;
         private System.Windows.Forms.TabPage tabTrend;
         private System.Windows.Forms.TabPage tabOptions;
-        private System.Windows.Forms.NotifyIcon systemTrayMenu;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.NotifyIcon systemTrayIcon;
+        private System.Windows.Forms.ContextMenuStrip trayMenu;
         private System.Windows.Forms.ToolStripMenuItem trayMenuTitle;
-        private System.Windows.Forms.ToolStripMenuItem overToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trayMenuAboutButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem verversenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trayMenuRefreshButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem optiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trayMenuOptionsButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sluitenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trayMenuOpenButton;
+        private System.Windows.Forms.ToolStripMenuItem trayMenuCloseButton;
     }
 }
