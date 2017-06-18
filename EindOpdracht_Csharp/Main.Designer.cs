@@ -51,22 +51,23 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxConditionImage = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelWind = new System.Windows.Forms.Label();
+            this.labelConditionHumididy = new System.Windows.Forms.Label();
+            this.labelConditionTemperature = new System.Windows.Forms.Label();
+            this.labelConditionLocation = new System.Windows.Forms.Label();
+            this.labelConditionText = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSaveSettings = new System.Windows.Forms.Button();
+            this.groupBoxRadioButtons = new System.Windows.Forms.GroupBox();
+            this.radioButtonFahrenheit = new System.Windows.Forms.RadioButton();
+            this.radioButtonCelcius = new System.Windows.Forms.RadioButton();
+            this.intervalSettingTextBox = new System.Windows.Forms.TextBox();
+            this.locationSettingTextBox = new System.Windows.Forms.TextBox();
             this.tabMenu.SuspendLayout();
             this.tabCurrent.SuspendLayout();
             this.tabTrend.SuspendLayout();
@@ -74,7 +75,8 @@
             this.trayMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxConditionImage)).BeginInit();
+            this.groupBoxRadioButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMenu
@@ -236,28 +238,28 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.labelConditionText);
+            this.groupBox1.Controls.Add(this.labelConditionLocation);
+            this.groupBox1.Controls.Add(this.labelConditionTemperature);
+            this.groupBox1.Controls.Add(this.labelConditionHumididy);
+            this.groupBox1.Controls.Add(this.labelWind);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.pictureBoxConditionImage);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(10, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(408, 257);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.groupBoxRadioButtons);
+            this.groupBox2.Controls.Add(this.buttonSaveSettings);
+            this.groupBox2.Controls.Add(this.intervalSettingTextBox);
+            this.groupBox2.Controls.Add(this.locationSettingTextBox);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label12);
@@ -277,13 +279,13 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Temperatuur:";
             // 
-            // pictureBox1
+            // pictureBoxConditionImage
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 50);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxConditionImage.Location = new System.Drawing.Point(6, 12);
+            this.pictureBoxConditionImage.Name = "pictureBoxConditionImage";
+            this.pictureBoxConditionImage.Size = new System.Drawing.Size(54, 50);
+            this.pictureBoxConditionImage.TabIndex = 1;
+            this.pictureBoxConditionImage.TabStop = false;
             // 
             // label5
             // 
@@ -305,55 +307,55 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Wind:";
             // 
-            // label8
+            // labelWind
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(58, 150);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 20);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "NO met 18 km/h";
+            this.labelWind.AutoSize = true;
+            this.labelWind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWind.Location = new System.Drawing.Point(58, 150);
+            this.labelWind.Name = "labelWind";
+            this.labelWind.Size = new System.Drawing.Size(123, 20);
+            this.labelWind.TabIndex = 5;
+            this.labelWind.Text = "NO met 18 km/h";
             // 
-            // label7
+            // labelConditionHumididy
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(142, 115);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 20);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "60%";
+            this.labelConditionHumididy.AutoSize = true;
+            this.labelConditionHumididy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConditionHumididy.Location = new System.Drawing.Point(142, 115);
+            this.labelConditionHumididy.Name = "labelConditionHumididy";
+            this.labelConditionHumididy.Size = new System.Drawing.Size(41, 20);
+            this.labelConditionHumididy.TabIndex = 6;
+            this.labelConditionHumididy.Text = "60%";
             // 
-            // label9
+            // labelConditionTemperature
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(113, 81);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 20);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "25 C";
+            this.labelConditionTemperature.AutoSize = true;
+            this.labelConditionTemperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConditionTemperature.Location = new System.Drawing.Point(113, 81);
+            this.labelConditionTemperature.Name = "labelConditionTemperature";
+            this.labelConditionTemperature.Size = new System.Drawing.Size(42, 20);
+            this.labelConditionTemperature.TabIndex = 7;
+            this.labelConditionTemperature.Text = "25 C";
             // 
-            // label10
+            // labelConditionLocation
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(79, 16);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(156, 24);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Emmen, Drente";
+            this.labelConditionLocation.AutoSize = true;
+            this.labelConditionLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConditionLocation.Location = new System.Drawing.Point(79, 16);
+            this.labelConditionLocation.Name = "labelConditionLocation";
+            this.labelConditionLocation.Size = new System.Drawing.Size(156, 24);
+            this.labelConditionLocation.TabIndex = 8;
+            this.labelConditionLocation.Text = "Emmen, Drente";
             // 
-            // label11
+            // labelConditionText
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(79, 42);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 20);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Zonnig";
+            this.labelConditionText.AutoSize = true;
+            this.labelConditionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConditionText.Location = new System.Drawing.Point(79, 42);
+            this.labelConditionText.Name = "labelConditionText";
+            this.labelConditionText.Size = new System.Drawing.Size(58, 20);
+            this.labelConditionText.TabIndex = 9;
+            this.labelConditionText.Text = "Zonnig";
             // 
             // label12
             // 
@@ -385,52 +387,70 @@
             this.label14.TabIndex = 3;
             this.label14.Text = "Weergave:";
             // 
-            // textBox1
+            // buttonSaveSettings
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(104, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 26);
-            this.textBox1.TabIndex = 4;
+            this.buttonSaveSettings.Location = new System.Drawing.Point(283, 216);
+            this.buttonSaveSettings.Name = "buttonSaveSettings";
+            this.buttonSaveSettings.Size = new System.Drawing.Size(119, 35);
+            this.buttonSaveSettings.TabIndex = 8;
+            this.buttonSaveSettings.Text = "Oke";
+            this.buttonSaveSettings.UseVisualStyleBackColor = true;
+            this.buttonSaveSettings.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // groupBoxRadioButtons
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(104, 53);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(208, 26);
-            this.textBox2.TabIndex = 5;
+            this.groupBoxRadioButtons.Controls.Add(this.radioButtonFahrenheit);
+            this.groupBoxRadioButtons.Controls.Add(this.radioButtonCelcius);
+            this.groupBoxRadioButtons.Location = new System.Drawing.Point(104, 85);
+            this.groupBoxRadioButtons.Name = "groupBoxRadioButtons";
+            this.groupBoxRadioButtons.Size = new System.Drawing.Size(155, 25);
+            this.groupBoxRadioButtons.TabIndex = 9;
+            this.groupBoxRadioButtons.TabStop = false;
             // 
-            // radioButton1
+            // radioButtonFahrenheit
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(104, 92);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(75, 17);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Fahrenheit";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonFahrenheit.AutoSize = true;
+            this.radioButtonFahrenheit.Checked = global::EindOpdracht_Csharp.Properties.Settings.Default.TemperatureF;
+            this.radioButtonFahrenheit.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::EindOpdracht_Csharp.Properties.Settings.Default, "TemperatureF", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioButtonFahrenheit.Location = new System.Drawing.Point(6, 8);
+            this.radioButtonFahrenheit.Name = "radioButtonFahrenheit";
+            this.radioButtonFahrenheit.Size = new System.Drawing.Size(75, 17);
+            this.radioButtonFahrenheit.TabIndex = 6;
+            this.radioButtonFahrenheit.Text = "Fahrenheit";
+            this.radioButtonFahrenheit.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonCelcius
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(185, 93);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(59, 17);
-            this.radioButton2.TabIndex = 7;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Celcius";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonCelcius.AutoSize = true;
+            this.radioButtonCelcius.Checked = global::EindOpdracht_Csharp.Properties.Settings.Default.TemperatureC;
+            this.radioButtonCelcius.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::EindOpdracht_Csharp.Properties.Settings.Default, "TemperatureC", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioButtonCelcius.Location = new System.Drawing.Point(87, 8);
+            this.radioButtonCelcius.Name = "radioButtonCelcius";
+            this.radioButtonCelcius.Size = new System.Drawing.Size(59, 17);
+            this.radioButtonCelcius.TabIndex = 7;
+            this.radioButtonCelcius.TabStop = true;
+            this.radioButtonCelcius.Text = "Celcius";
+            this.radioButtonCelcius.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // intervalSettingTextBox
             // 
-            this.button1.Location = new System.Drawing.Point(283, 216);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 35);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Oke";
-            this.button1.UseVisualStyleBackColor = true;
+            this.intervalSettingTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::EindOpdracht_Csharp.Properties.Settings.Default, "RefreshInterval", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.intervalSettingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.intervalSettingTextBox.Location = new System.Drawing.Point(104, 53);
+            this.intervalSettingTextBox.Name = "intervalSettingTextBox";
+            this.intervalSettingTextBox.Size = new System.Drawing.Size(208, 26);
+            this.intervalSettingTextBox.TabIndex = 5;
+            this.intervalSettingTextBox.Text = global::EindOpdracht_Csharp.Properties.Settings.Default.RefreshInterval;
+            // 
+            // locationSettingTextBox
+            // 
+            this.locationSettingTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::EindOpdracht_Csharp.Properties.Settings.Default, "UserLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.locationSettingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.locationSettingTextBox.Location = new System.Drawing.Point(104, 16);
+            this.locationSettingTextBox.Name = "locationSettingTextBox";
+            this.locationSettingTextBox.Size = new System.Drawing.Size(208, 26);
+            this.locationSettingTextBox.TabIndex = 4;
+            this.locationSettingTextBox.Text = global::EindOpdracht_Csharp.Properties.Settings.Default.UserLocation;
             // 
             // Main
             // 
@@ -455,7 +475,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxConditionImage)).EndInit();
+            this.groupBoxRadioButtons.ResumeLayout(false);
+            this.groupBoxRadioButtons.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -482,22 +504,23 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelWind;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxConditionImage;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelConditionText;
+        private System.Windows.Forms.Label labelConditionLocation;
+        private System.Windows.Forms.Label labelConditionTemperature;
+        private System.Windows.Forms.Label labelConditionHumididy;
+        private System.Windows.Forms.TextBox intervalSettingTextBox;
+        private System.Windows.Forms.TextBox locationSettingTextBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button buttonSaveSettings;
+        private System.Windows.Forms.RadioButton radioButtonCelcius;
+        private System.Windows.Forms.RadioButton radioButtonFahrenheit;
+        private System.Windows.Forms.GroupBox groupBoxRadioButtons;
     }
 }

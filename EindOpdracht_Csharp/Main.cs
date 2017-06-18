@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -19,7 +20,17 @@ namespace EindOpdracht_Csharp
 
         private void Main_Load(object sender, EventArgs e)
         {
+            locationSettingTextBox.Text = Properties.Settings.Default.UserLocation;
+            intervalSettingTextBox.Text = Properties.Settings.Default.RefreshInterval;
 
+            if (Properties.Settings.Default.TemperatureC )
+            {
+                radioButtonCelcius.Select();
+            }
+            else
+            {
+                radioButtonFahrenheit.Select();
+            }
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -62,6 +73,20 @@ namespace EindOpdracht_Csharp
             tabMenu.SelectedTab = tabCurrent;
             Show();
             WindowState = FormWindowState.Normal;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.UserLocation = locationSettingTextBox.Text;
+            Properties.Settings.Default.RefreshInterval = intervalSettingTextBox.Text;
+            Properties.Settings.Default.TemperatureC = radioButtonCelcius.Checked;
+            Properties.Settings.Default.TemperatureF = radioButtonFahrenheit.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void UpdateCurrentConditions()
+        {
+            labelConditionLocation.Text = "";
         }
     }
 }
