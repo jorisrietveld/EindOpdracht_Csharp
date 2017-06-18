@@ -16,6 +16,7 @@ namespace EindOpdracht_Csharp
         public Main()
         {
             InitializeComponent();
+            AutoUpdate();
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -84,9 +85,19 @@ namespace EindOpdracht_Csharp
             Properties.Settings.Default.Save();
         }
 
+        private void AutoUpdate()
+        {
+            var timer = new System.Threading.Timer(
+                e => UpdateCurrentConditions(),
+                null,
+                TimeSpan.Zero,
+                TimeSpan.FromMinutes(int.Parse(Properties.Settings.Default.RefreshInterval))
+            );
+        }
+
         private void UpdateCurrentConditions()
         {
-            labelConditionLocation.Text = "";
+            
         }
     }
 }

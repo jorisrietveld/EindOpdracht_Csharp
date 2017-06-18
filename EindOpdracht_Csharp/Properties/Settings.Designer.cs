@@ -25,7 +25,7 @@ namespace EindOpdracht_Csharp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Emmen, NL")]
         public string UserLocation {
             get {
                 return ((string)(this["UserLocation"]));
@@ -37,7 +37,7 @@ namespace EindOpdracht_Csharp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public string RefreshInterval {
             get {
                 return ((string)(this["RefreshInterval"]));
