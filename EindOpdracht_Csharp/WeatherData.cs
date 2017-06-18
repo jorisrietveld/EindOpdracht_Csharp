@@ -14,16 +14,16 @@ namespace EindOpdracht_Csharp
     
     public partial class weatherdata
     {
-        public weatherdata()
-        {
-            this.weatherdatacondition = new HashSet<weatherdatacondition>();
-        }
-    
         public long id { get; set; }
         public string country { get; set; }
         public string province { get; set; }
         public string city { get; set; }
-    
-        public virtual ICollection<weatherdatacondition> weatherdatacondition { get; set; }
+        public System.DateTime created { get; set; }
+        public sbyte temparature { get; set; }
+        public byte humididy { get; set; }
+        public int windDirection { get; set; }
+        public int windSpeed { get; set; }
+        public string text { get; set; }
+        public byte code { get; set; }
     }
 }

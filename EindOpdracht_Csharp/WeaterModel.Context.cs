@@ -13,10 +13,10 @@ namespace EindOpdracht_Csharp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class stendenweatherEntities : DbContext
+    public partial class stendenweatherEntities1 : DbContext
     {
-        public stendenweatherEntities()
-            : base("name=stendenweatherEntities")
+        public stendenweatherEntities1()
+            : base("name=stendenweatherEntities1")
         {
         }
     
@@ -26,6 +26,5 @@ namespace EindOpdracht_Csharp
         }
     
         public DbSet<weatherdata> weatherdata { get; set; }
-        public DbSet<weatherdatacondition> weatherdatacondition { get; set; }
     }
 }
