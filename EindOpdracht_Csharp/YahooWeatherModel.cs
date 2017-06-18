@@ -16,12 +16,17 @@ namespace EindOpdracht_Csharp
 
         private JObject JsonResponseObject { get; set; }
 
-        private void GetCurrentWeather()
+        private string WeatherDataString { get; set; }
+
+        /**
+         * This methods will make an call to the Yahoo weather api.
+         */
+        private void DownloadWeatherData()
         {
             string jsonString;
-            using ( WebClient webClient = new WebClient())
+            using (WebClient webClient = new WebClient())
             {
-                jsonString = webClient.DownloadString(
+                WeatherDataString = webClient.DownloadString(
                     @"https://query.yahooapis.com/v1/public/yql?q=" +
                     @"https://query.yahooapis.com/v1/public/yql?q=select%20location%2C%20wind%2C%20atmoshere%2C%20image%2C%20item.condition%20%20from%20weather.forecast%20where%20woeid%20" +
                     @"in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" +
@@ -29,29 +34,72 @@ namespace EindOpdracht_Csharp
                     @"%22)and%20u%3D'c'" +
                     @"format=json"
                 );
-                //https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Emmen%2C%20NL%22)
-
-                JsonResponseObject = JObject.Parse(jsonString);
-                JsonSchema yahooValidatitionJsonSchema = JsonSchema.Parse(File.ReadAllText("/yahoo-validation-schema.json"));
-
-                if (!JsonResponseObject.IsValid(yahooValidatitionJsonSchema))
-                {
-                    MessageBox.Show("Invalid json send by yahoo api.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    JsonResponseObject = null;
-                }
             }
         }
 
-        private void SaveData()
+        /**
+         * This method will parse the JSON string send by the api.
+         */
+        private void ParseWeatherData()
         {
-            if (JsonResponseObject == null)
+            try
             {
-                return;
+                JsonResponseObject = JObject.Parse(WeatherDataString);
+                JsonSchema yahooValidatitionJsonSchema =
+                    JsonSchema.Parse(File.ReadAllText("/yahoo-validation-schema.json"));
+
+                if (!JsonResponseObject.IsValid(yahooValidatitionJsonSchema))
+                {
+                    MessageBox.Show(@"Invalid json send by yahoo api. Please try again later.", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.ToString());
             }
 
-            stendenweatherEntities stendenWeatherContext = new stendenweatherEntities();
-            var weatherDataEntity = stendenWeatherContext.weatherdata.Where( c => c.city == ) 
-            
+        }
+
+        /**
+         * This method will persist weather data into the database.
+         */
+        private void PersistWeatherData()
+        {
+            try
+            {
+                stendenweatherEntities1 stendenWeatherContext = new stendenweatherEntities1();
+                var channelData = JsonResponseObject["query"]["results"]["channel"];
+
+                weatherdata newWeatherdata = new weatherdata
+                {
+                    city = (string) channelData["location"]["city"],
+                    country = (string) channelData["location"]["country"],
+                    province = (string) channelData["location"]["region"],
+                    code = (byte) channelData["item"]["condition"]["code"],
+                    text = (string) channelData["item"]["condition"]["text"],
+                    temparature = (sbyte) channelData["item"]["condition"]["temp"],
+                    humididy = (byte) channelData["atmosphere"]["humididy"],
+                    windDirection = (int) channelData["wind"]["direction"],
+                    windSpeed = (int) channelData["wind"]["speed"],
+                };
+
+                stendenWeatherContext.weatherdata.Add(newWeatherdata);
+                stendenWeatherContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.ToString());
+            }
+        }
+
+        /**
+         * This method will download new weather data and persist it into the database.
+         */
+        public void RefreshWeatherData()
+        {
+            DownloadWeatherData();
+            ParseWeatherData();
+            PersistWeatherData();
         }
     }
 }
