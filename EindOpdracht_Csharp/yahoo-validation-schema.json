@@ -1,0 +1,161 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://stenden-weather.com/example.json",
+  "properties": {
+    "query": {
+      "id": "/properties/query",
+      "properties": {
+        "count": {
+          "id": "/properties/query/properties/count",
+          "type": "integer"
+        },
+        "created": {
+          "id": "/properties/query/properties/created",
+          "type": "string"
+        },
+        "lang": {
+          "id": "/properties/query/properties/lang",
+          "type": "string"
+        },
+        "results": {
+          "id": "/properties/query/properties/results",
+          "properties": {
+            "channel": {
+              "id": "/properties/query/properties/results/properties/channel",
+              "properties": {
+                "atmosphere": {
+                  "id": "/properties/query/properties/results/properties/channel/properties/atmosphere",
+                  "properties": {
+                    "humidity": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/atmosphere/properties/humidity",
+                      "type": "string"
+                    },
+                    "pressure": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/atmosphere/properties/pressure",
+                      "type": "string"
+                    },
+                    "rising": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/atmosphere/properties/rising",
+                      "type": "string"
+                    },
+                    "visibility": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/atmosphere/properties/visibility",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "humidity"
+                  ],
+                  "type": "object"
+                },
+                "item": {
+                  "id": "/properties/query/properties/results/properties/channel/properties/item",
+                  "properties": {
+                    "condition": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/item/properties/condition",
+                      "properties": {
+                        "code": {
+                          "id": "/properties/query/properties/results/properties/channel/properties/item/properties/condition/properties/code",
+                          "type": "string"
+                        },
+                        "date": {
+                          "id": "/properties/query/properties/results/properties/channel/properties/item/properties/condition/properties/date",
+                          "type": "string"
+                        },
+                        "temp": {
+                          "id": "/properties/query/properties/results/properties/channel/properties/item/properties/condition/properties/temp",
+                          "type": "string"
+                        },
+                        "text": {
+                          "id": "/properties/query/properties/results/properties/channel/properties/item/properties/condition/properties/text",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "text",
+                        "code",
+                        "temp"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "condition"
+                  ],
+                  "type": "object"
+                },
+                "location": {
+                  "id": "/properties/query/properties/results/properties/channel/properties/location",
+                  "properties": {
+                    "city": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/location/properties/city",
+                      "type": "string"
+                    },
+                    "country": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/location/properties/country",
+                      "type": "string"
+                    },
+                    "region": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/location/properties/region",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "city",
+                    "region",
+                    "country"
+                  ],
+                  "type": "object"
+                },
+                "wind": {
+                  "id": "/properties/query/properties/results/properties/channel/properties/wind",
+                  "properties": {
+                    "chill": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/wind/properties/chill",
+                      "type": "string"
+                    },
+                    "direction": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/wind/properties/direction",
+                      "type": "string"
+                    },
+                    "speed": {
+                      "id": "/properties/query/properties/results/properties/channel/properties/wind/properties/speed",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "direction",
+                    "speed"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "item",
+                "atmosphere",
+                "location",
+                "wind"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "channel"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "count",
+        "results"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "query"
+  ],
+  "type": "object"
+}
+

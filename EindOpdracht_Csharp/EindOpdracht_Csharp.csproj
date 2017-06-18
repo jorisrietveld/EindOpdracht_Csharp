@@ -32,17 +32,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
@@ -56,14 +65,29 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\IWeaterdataCondition.cs" />
-    <Compile Include="Model\IWeatherData.cs" />
-    <Compile Include="Model\WeatherApi\IApi.cs" />
-    <Compile Include="Model\WeatherApi\Yahoo\YahooAPi.cs" />
-    <Compile Include="Model\WeatherApi\Yahoo\YahooWeaterData.cs" />
-    <Compile Include="Model\WeatherApi\Yahoo\YahooWeatherDataCondition.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeatherData.cs">
+      <DependentUpon>WeatherModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeatherDataCondition.cs">
+      <DependentUpon>WeatherModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeatherModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeatherModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeatherModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeatherModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeatherModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeatherModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="YahooWeatherModel.cs" />
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
@@ -105,6 +129,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="WeatherModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WeatherModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="WeatherModel.edmx.diagram">
+      <DependentUpon>WeatherModel.edmx</DependentUpon>
+    </None>
+    <None Include="yahoo-validation-schema.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -118,9 +150,20 @@
     <Content Include="Resources\icon2.ico" />
     <Content Include="Resources\icon3.ico" />
     <Content Include="Resources\icon4.ico" />
+    <Content Include="WeatherModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WeatherModel.Context.cs</LastGenOutput>
+      <DependentUpon>WeatherModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="WeatherModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeatherModel.edmx</DependentUpon>
+      <LastGenOutput>WeatherModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Model\WeatherApi\OpenWeatherMaps\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
